@@ -23,7 +23,7 @@ public enum Perfil {
 		}
 		for(Perfil x : Perfil.values()){
 			if(cod.equals(x.getCodigo())) {
-				
+				return x;
 			}
 		}
 		throw new IllegalArgumentException("Perfil inválido");
