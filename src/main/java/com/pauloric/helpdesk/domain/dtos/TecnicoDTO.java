@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.pauloric.helpdesk.domain.Tecnico;
 import com.pauloric.helpdesk.domain.enums.Perfil;
@@ -14,9 +16,13 @@ public class TecnicoDTO implements Serializable {
 		private static final long serialVersionUID=1L;
 		
 		protected Integer id;
+		@NotNull(message="o campo Nome é requerido")
 		protected String nome;
+		@NotNull(message="o campo CPF é requerido")
 		protected String cpf;
+		@NotNull(message="o campo Email é requerido")
 		protected String email;
+		@NotNull(message="o campo Senha é requerido")
 		protected String senha;
 		protected Set<Integer> perfis = new HashSet<>();
 		
@@ -25,6 +31,7 @@ public class TecnicoDTO implements Serializable {
 
 		public TecnicoDTO() {
 			super();
+			addPerfil(Perfil.CLIENTE);
 		
 		}
 
@@ -37,6 +44,8 @@ public class TecnicoDTO implements Serializable {
 			this.senha = obj.getSenha();
 			this.perfis = obj.getPerfis().stream().map(x->x.getCodigo()).collect(Collectors.toSet());
 			this.dataCriacao = obj.getDataCriacao();
+			
+			addPerfil(Perfil.CLIENTE);
 		}
 
 		public Integer getId() {
@@ -83,7 +92,7 @@ public class TecnicoDTO implements Serializable {
 			return perfis.stream().map(x->Perfil.toEnum(x)).collect(Collectors.toSet());
 		}
 
-		public void addPerfis(Perfil perfil) {
+		public void addPerfil(Perfil perfil) {
 			this.perfis.add(perfil.getCodigo());
 		}
 
