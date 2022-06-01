@@ -23,7 +23,7 @@ public enum Status {
 		}
 		for(Status x : Status.values()){
 			if(cod.equals(x.getCodigo())) {
-				
+				return x;
 			}
 		}
 		throw new IllegalArgumentException("Status inválido");
