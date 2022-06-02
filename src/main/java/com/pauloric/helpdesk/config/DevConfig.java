@@ -23,6 +23,5 @@ public class DevConfig {
 			this.dbService.instanciaDB();
 		}
 		return false;
-		
 	}
 }

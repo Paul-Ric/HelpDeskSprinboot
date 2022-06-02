@@ -1,5 +1,7 @@
 package com.pauloric.helpdesk.domain.enums;
 
+import com.pauloric.helpdesk.domain.enums.Prioridade;
+
 public enum Prioridade {
 
 	BAIXA(0, "BAIXA"), MEDIA(1, "MEDIA"), ALTA(2, "ALTA");
